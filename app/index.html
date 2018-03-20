@@ -80,7 +80,7 @@
               <div class="prod-right">
                 <div class="prod-price" ng-bind="'₹'+stock"></div>
                 <div class="prod-add">
-                  <img src="/images/add.svg" alt="add-product">
+                  <img src="images/add.svg" alt="add-product">
                 </div>
               </div>
             </div>
@@ -117,19 +117,19 @@
                 <td>
                   <div class="input-count">
                     <div class="neg" ng-init="count = 1">
-                      <img src="/images/minus.svg" alt="reduce" ng-click="count = count-1; shareCalculate(folio.name, count)">
+                      <img src="images/minus.svg" alt="reduce" ng-click="count = count-1; shareCalculate(folio.name, count)">
                     </div>
                     <div class="input-div">
                       <input type="text" class="input-counter" ng-value="count">
                     </div>
                     <div class="pos">
-                      <img src="/images/plus.svg" alt="increase" ng-click="count = count+1; shareCalculate(folio.name, count)">
+                      <img src="images/plus.svg" alt="increase" ng-click="count = count+1; shareCalculate(folio.name, count)">
                     </div>
                   </div>
                 </td>
                 <td>{{folio.weight}}%</td>
                 <td ng-click="removeFolio(folio.name, count)">
-                  <img src="/images/remove.svg" alt="remove" class="remove-img">
+                  <img src="images/remove.svg" alt="remove" class="remove-img">
                 </td>
               </tr>
             </tbody>
