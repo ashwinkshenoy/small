@@ -25,7 +25,7 @@
   <meta name="twitter:image" content="http://tribee.io/images/tribee.jpg">
 
   <!-- Place favicon.ico in the root directory -->
-  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="icon" href="favicon.ico">
 
   <!-- build:css styles/vendor.css -->
   <!-- bower:css -->
@@ -112,8 +112,8 @@
             </thead>
             <tbody>
               <tr ng-repeat="folio in portfolio">
-                <td>{{folio.name}}</td>
-                <td>₹{{folio.price}}</td>
+                <td ng-bind="'₹'+folio.name"></td>
+                <td ng-bind="'₹'+folio.price"></td>
                 <td>
                   <div class="input-count">
                     <div class="neg" ng-init="count = 1">
@@ -127,7 +127,7 @@
                     </div>
                   </div>
                 </td>
-                <td>{{folio.weight}}%</td>
+                <td ng-bind="folio.weight+'%'"></td>
                 <td ng-click="removeFolio(folio.name, count)">
                   <img src="images/remove.svg" alt="remove" class="remove-img">
                 </td>
@@ -143,15 +143,15 @@
           <div class="row">
             <div class="col col-width--50 col--mgbtm">
               <div class="stock-overview-title">Stocks</div>
-              <div class="stock-overview-value">{{stocksCount}}</div>
+              <div class="stock-overview-value" ng-bind="stocksCount"></div>
             </div>
             <div class="col col-width--50 col--mgbtm">
               <div class="stock-overview-title">Net Worth</div>
-              <div class="stock-overview-value">₹{{netWorth}}</div>
+              <div class="stock-overview-value" ng-bind="'₹'+netWorth"></div>
             </div>
             <div class="col col-width--50 col--mgbtm">
               <div class="stock-overview-title">P/E Ratio</div>
-              <div class="stock-overview-value">{{pe()}}</div>
+              <div class="stock-overview-value" ng-bind="pe()"></div>
             </div>
             <div class="col col-width--50 col--mgbtm">
               <div class="stock-overview-title">P/B Ratio</div>
