@@ -63,7 +63,7 @@
       <button class="filter-btn">
           <i class="fa fa-filter"></i>
           Apply Filters
-          <span>3</span>
+          <span>0</span>
         </button>
 
       <div class="clearfix"></div>
@@ -86,7 +86,10 @@
             </div>
           </div>
         </div>
+      </div>
 
+      <div class="text-center" ng-if="stocks.length <= 0">
+        Loding Stocks...
       </div>
       <!--product-outer end-->
 
