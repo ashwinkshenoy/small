@@ -1,0 +1,387 @@
+
+// Fonts
+$icon-font-path: '../fonts/';
+
+@import url("https://use.typekit.net/akm8cei.css");
+
+/* Colors */
+  $black: #000000;
+  $blue: #3489D1;
+  $blue-dark: #287DCE;
+  $blue-light: #8FB9E7;
+  $blue-light2: #17BCD9;
+  $blue-light3: #00A9D2;
+  $teal-dark: #2BC4DD;
+  $teal-light: #00B3D6;
+  $white: #ffffff;
+/* Colors End */
+
+/*General*/
+body {
+  background: #f7f7f7;
+  display: block;
+  font-family: "proxima-nova",sans-serif;
+  margin: 0;
+}
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+.container {
+  margin:  0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+@media screen and (min-width: 992px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+.clearfix {
+  clear: both;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.row {
+  -ms-flex-wrap: wrap;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.col {
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  max-width: 100%;
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.col-width--50 {
+  flex: 1 0 45%;
+}
+
+.col--mgbtm {
+  margin-bottom: 30px;
+}
+/*General*/
+
+/*Buttons*/
+.sm-blue-btn {
+  background: #3687b6 !important;
+  color: #fff !important;
+  font-size: 15px;
+  font-weight: 700;
+  outline: none !important;
+  padding: 5px 10px;
+}
+/*Buttons end*/
+
+.blue-bg-sec {
+  background-image: linear-gradient(90deg, $teal-dark 0%, $blue 100%);
+  height: 50px;
+}
+
+.title-main {
+  color: $blue-light2;
+  font-size: 32px;
+  margin:  30px 0;
+}
+
+/* Box */
+.white-box {
+  background: $white;
+  min-height: 150px;
+  padding: 55px 25px 25px;
+  position: relative;
+}
+
+.box-title {
+  box-shadow: 7px 7px 0px -3px rgba(0, 0, 0, 0.14901960784313725);
+  color: $white;
+  font-size: 18px;
+  left: -15px;
+  padding: 10px 25px;
+  position: absolute;
+  text-transform:  uppercase;
+  top: -10px;
+  &:before {
+    border-left: 16px solid rgba(0, 0, 0, 0);
+    border-right: 0px solid rgba(0, 0, 0, 0);
+    bottom: -20px;
+    content: '';
+    left: 0px;
+    position: absolute;
+  }
+  &.title--teal {
+    background: $teal-light;
+    &:before {
+      border-top: 20px solid #098DAD;
+    }
+  }
+  &.title--blue {
+    background: $blue-dark;
+    &:before {
+      border-top: 20px solid #15569C;
+    }
+  }
+}
+
+.box-desc {
+  color: $blue-light3;
+  float: left;
+  font-size: 16px;
+}
+
+.filter-btn {
+  background: $white;
+  border: none;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,0.30);
+  clear: both;
+  color: $blue-light3;
+  cursor: pointer;
+  float: right;
+  font-size: 16px;
+  outline: none;
+  padding: 15px 20px;
+  position:  relative;
+  top: -35px;
+  transition: .15s all linear;
+  will-change: box-shadow;
+  &:hover {
+    box-shadow: 0 3px 6px 0 rgba(0,0,0,0.30);
+  }
+  &:active {
+    box-shadow: 0 0px 1px 0 rgba(0,0,0,0.30);
+  }
+  span {
+    background: #009FCE;
+    border-radius: 50%;
+    color: $white;
+    font-size: 12px;
+    margin-left:  10px;
+    padding: 4px 8px;
+    position:  relative;
+    top: -1px;
+  }
+}
+
+/* Product */
+.product-outer {
+  display: grid;
+  grid-column-gap: 25px;
+  grid-row-gap: 25px;
+  grid-template-columns: auto auto auto auto;
+  .product {
+    box-shadow: 0 0 4px 0 rgba(0,0,0,0.20);
+    cursor: pointer;
+    min-height: 75px;
+    min-width: 250px;
+    padding: 20px;
+    transition: 0.2s all linear;
+    &:hover .prod-add {
+      opacity: 1;
+    }
+    &:hover .prod-price {
+      opacity: 0;
+    }
+  }
+  .prod-name {
+    color: #666666;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 16px;
+    margin-bottom: 4px;
+  }
+  .prod-type {
+    color: #89A6EC;
+    font-size: 12px;
+    line-height: 12px;
+  }
+  .prod-price {
+    font-size: 24px;
+    font-weight: 100;
+    transition: 0.2s all linear;
+  }
+  .prod-add {
+    opacity: 0;
+    position: absolute;
+    right: 25px;
+    top: 5px;
+    transition: 0.2s all linear;
+  }
+}
+
+/* Pagination */
+.pagination {
+  clear: both;
+  margin-bottom:  10px;
+  margin-top: 25px;
+  overflow: auto;
+  width: 100%;
+  .pag-prev,
+  .pag-next {
+    color: $blue-light3;
+    cursor: pointer;
+    float: left;
+    text-transform: uppercase;
+  }
+  .pag-next {
+    float: right;
+  }
+}
+/* Pagination end */
+/* Product end */
+/* Box end */
+
+/* Portfolio */
+.portfolio {
+  display: flex;
+}
+.stock-table {
+  flex: 1 0 150px;
+  margin-right: 15px;
+  width: 100%;
+  /* Table */
+  table {
+    table-layout: fixed;
+    border-collapse: collapse;
+    box-shadow: 0px 0px 6px 1px #e4e4e4;
+    width: 100%;
+    thead {
+      background: #8FB9E7;
+      th {
+        color: $white;
+        font-size:  14px;
+        font-weight: 400;
+        padding: 15px;
+        text-align: left;
+        &:last-child {
+          width: 20px;
+          padding: 20px;
+        }
+      }
+    }
+    tbody td {
+      color: #101010;
+      padding: 15px;
+      &:first-child {
+        color: $blue-dark;
+      }
+      &:last-child {
+        width: 20px;
+        padding: 15px 0;
+        cursor: pointer;
+      }
+    }
+  }
+  /* Table end */
+  .input-count {
+    display: grid;
+    grid-gap: 0px;
+    grid-template-columns: auto 35px auto;
+    position:  relative;
+    top: -2px;
+    .neg,
+    .pos {
+      border: solid 1px #ccc;
+      cursor: pointer;
+      height: 25px;
+      margin-left:  -2px;
+      padding: 2px 0px;
+      text-align: center;
+    }
+    .neg {
+      border-radius: 3px 0 0 3px;
+    }
+    .pos {
+      border-radius: 0 3px 3px 0;
+    }
+    .input-counter {
+      border: solid 1px #ccc;
+      font-size: 13px;
+      font-weight: 300;
+      height: 25px;
+      margin-left: -1px;
+      text-align: center;
+      width: 100%;
+    }
+    .remove-img {
+      cursor: pointer;
+      position:  relative;
+      top: -1px;
+      width: 15px;
+    }
+  }
+}
+
+/* Chart */
+.stock-chart {
+  flex: 1 0 150px;
+  .stock-chart-title {
+    color: #1D70CA;
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  .amchart {
+    margin-left: -15px;
+  }
+}
+/* Chart end */
+
+/* Stock Overview */
+.stock-overview {
+  flex: 1 0 0;
+  padding-top: 50px;
+  .stock-overview-title {
+    color: #287DCE;
+    font-weight: 400;
+  }
+  .stock-overview-value {
+    color: #222222;
+    font-size: 25px;
+    font-weight: 300;
+    margin-top: 10px;
+  }
+  .stock-overview-btn {
+    background-image: linear-gradient(-90deg, #2BC4DD 0, #3489D1 50%, #2BC4DD);
+    border: none;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.30);
+    color: $white;
+    cursor:  pointer;
+    font-size: 17px;
+    font-weight: 400;
+    height: 50px;
+    outline: none;
+    padding: 14px;
+    text-transform: uppercase;
+    transition:  .1s all linear;
+    width: 100%;
+    background-size: 200% auto;
+    transition: 0.2s all linear;
+    &:hover {
+      background-position: 100%;
+      box-shadow: none;
+    }
+  }
+}
+/* Stock Overview end */
+/* Portfolio end */

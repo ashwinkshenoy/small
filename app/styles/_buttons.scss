@@ -1,0 +1,13 @@
+.white-btn {
+  background: transparent;
+  border: solid 1px $white;
+  border-radius: 100px;
+  color: $white;
+  padding: 8px 30px;
+
+  &:hover,
+  &:focus {
+    color: $white;
+    outline: none !important;
+  }
+}

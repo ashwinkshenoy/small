@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, shrink-to-fit=no">
+  <meta name="theme-color" content="#062F41">
+  <meta name="description" content="small">
+  <title>Small</title>
+
+  <!--fb meta tags-->
+  <meta property="og:title" content="SmallCase">
+  <meta property="og:description" content="SmallCase">
+  <meta property="og:image" content="http://tribee.io/images/tribee.jpg">
+  <meta property="og:image:type" content="image/jpg">
+  <meta property="og:image:width" content="851">
+  <meta property="og:image:height" content="315">
+
+  <!-- Twitter Card data -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@smallcase">
+  <meta name="twitter:title" content="smallcase.com">
+  <meta name="twitter:description" content="smallcase">
+  <meta name="twitter:image" content="http://tribee.io/images/tribee.jpg">
+
+  <!-- Place favicon.ico in the root directory -->
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <!-- build:css styles/vendor.css -->
+  <!-- bower:css -->
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:css styles/main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- endbuild -->
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+  <!--[if lt IE 10]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+
+
+
+  <div class="blue-bg-sec"></div>
+
+  <div class="container" ng-controller="stockController">
+    <div class="title-main">Portfolio Builder</div>
+
+    <div class="white-box">
+      <div class="box-title title--teal">Pick Stocks</div>
+      <dir-pagination-controls template-url="range.html"></dir-pagination-controls>
+      <button class="filter-btn">
+          <i class="fa fa-filter"></i>
+          Apply Filters
+          <span>3</span>
+        </button>
+
+      <div class="clearfix"></div>
+
+      <div class="product-outer">
+
+        <div class="product" dir-paginate="(key, stock) in stocks | itemsPerPage: 8" ng-click="addFolio(key, stock)">
+          <div class="row">
+            <div class="col col-width--50">
+              <div class="prod-name" ng-bind="key"></div>
+              <div class="prod-type">Financial Service</div>
+            </div>
+            <div class="col text-right">
+              <div class="prod-right">
+                <div class="prod-price" ng-bind="'₹'+stock"></div>
+                <div class="prod-add">
+                  <img src="/images/add.svg" alt="add-product">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!--product-outer end-->
+
+      <dir-pagination-controls template-url="pagination.html"></dir-pagination-controls>
+    </div>
+    <!-- white-box end -->
+
+    <br><br>
+
+    <div class="white-box">
+      <div class="box-title title--blue">Manage Portfolio</div>
+      <div class="portfolio">
+        <div class="stock-table">
+          <table>
+            <thead>
+              <tr>
+                <th>STOCK</th>
+                <th>PRICE</th>
+                <th>SHARES</th>
+                <th>WEIGHT</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="folio in portfolio">
+                <td>{{folio.name}}</td>
+                <td>₹{{folio.price}}</td>
+                <td>
+                  <div class="input-count">
+                    <div class="neg" ng-init="count = 1">
+                      <img src="/images/minus.svg" alt="reduce" ng-click="count = count-1; shareCalculate(folio.name, count)">
+                    </div>
+                    <div class="input-div">
+                      <input type="text" class="input-counter" ng-value="count">
+                    </div>
+                    <div class="pos">
+                      <img src="/images/plus.svg" alt="increase" ng-click="count = count+1; shareCalculate(folio.name, count)">
+                    </div>
+                  </div>
+                </td>
+                <td>{{folio.weight}}%</td>
+                <td ng-click="removeFolio(folio.name, count)">
+                  <img src="/images/remove.svg" alt="remove" class="remove-img">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="stock-chart">
+          <div class="stock-chart-title">Portfolio Overview</div>
+          <am-chart id="myFirstChart" options="amChartOptions" height="300px" width="100%"></am-chart>
+        </div>
+        <div class="stock-overview">
+          <div class="row">
+            <div class="col col-width--50 col--mgbtm">
+              <div class="stock-overview-title">Stocks</div>
+              <div class="stock-overview-value">{{stocksCount}}</div>
+            </div>
+            <div class="col col-width--50 col--mgbtm">
+              <div class="stock-overview-title">Net Worth</div>
+              <div class="stock-overview-value">₹{{netWorth}}</div>
+            </div>
+            <div class="col col-width--50 col--mgbtm">
+              <div class="stock-overview-title">P/E Ratio</div>
+              <div class="stock-overview-value">{{pe()}}</div>
+            </div>
+            <div class="col col-width--50 col--mgbtm">
+              <div class="stock-overview-title">P/B Ratio</div>
+              <div class="stock-overview-value">12.4</div>
+            </div>
+          </div>
+          <!--row end-->
+          <button class="stock-overview-btn">Build Portfolio</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- container end -->
+
+
+
+
+  <!-- build:js scripts/vendor.js -->
+  <!-- bower:js -->
+  <script src="/bower_components/angular/angular.js"></script>
+  <script src="/bower_components/angularUtils-pagination/dirPagination.js"></script>
+  <script src="/bower_components/amcharts/dist/amcharts/amcharts.js"></script>
+  <script src="/bower_components/amcharts/dist/amcharts/serial.js"></script>
+  <script src="/bower_components/amcharts/dist/amcharts/themes/light.js"></script>
+  <script src="/bower_components/amcharts-angular/dist/amChartsDirective.js"></script>
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:js scripts/plugins.js -->
+  <!-- <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/affix.js"></script> -->
+  <!-- <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/alert.js"></script> -->
+  <!-- <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js"></script> -->
+  <!-- <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js"></script> -->
+  <!-- <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js"></script> -->
+  <!-- <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js"></script> -->
+  <!-- <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/button.js"></script> -->
+  <!-- <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/popover.js"></script> -->
+  <!-- <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/carousel.js"></script> -->
+  <!-- <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js"></script> -->
+  <!-- <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js"></script> -->
+  <!-- <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js"></script> -->
+  <!-- <script src="/bower_components/angular/angular.js"></script>
+  <script src="/bower_components/angularUtils-pagination/dirPagination.js"></script> -->
+  <!-- endbuild -->
+
+  <!-- build:js scripts/main.js -->
+  <script src="scripts/main.js"></script>
+  <!-- endbuild -->
+</body>
+
+</html>
+
+<!--
+@ashwinkshenoy
+ -->

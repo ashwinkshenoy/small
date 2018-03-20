@@ -1,0 +1,17 @@
+{
+  "name": "small",
+  "dependencies": {
+    "angular": "^1.6.9",
+    "angularUtils-pagination": "angular-utils-pagination#^0.11.1",
+    "amcharts-angular": "^1.1.0"
+  },
+  "overrides": {
+    "amcharts": {
+        "main": [
+          "dist/amcharts/amcharts.js",
+          "dist/amcharts/serial.js",
+          "dist/amcharts/themes/light.js"
+        ]
+    }
+  }
+}

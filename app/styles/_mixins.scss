@@ -1,0 +1,28 @@
+// Box-shadow
+@mixin box-shadow($x, $y, $blur, $spread, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow: inset $x $y $blur $spread $color inset;
+    -moz-box-shadow: inset $x $y $blur $spread $color inset;
+    box-shadow: inset $x $y $blur $spread $color inset;
+  }
+  @else {
+    -webkit-box-shadow: $x $y $blur $spread $color;
+    -moz-box-shadow: $x $y $blur $spread $color;
+    box-shadow: $x $y $blur $spread $color;
+  }
+}
+// Box-shadow End
+
+// Media Screens
+@mixin media-custom-max($x) {
+  @media screen and (max-width: $x) {
+    @content;
+  }
+}
+
+@mixin media-custom-min($x) {
+  @media screen and (min-width: $x) {
+    @content;
+  }
+}
+// Media Screens End

@@ -1,0 +1,21 @@
+footer {
+  background: $black3;
+  color: $white;
+  font-weight: 300;
+  padding: 40px 0;
+}
+
+.foo--links {
+  ul {
+    padding-left: 0;
+
+    li {
+      display: inline-block;
+      margin-left: 5px;
+    }
+
+    a {
+      color: $white;
+    }
+  }
+}
