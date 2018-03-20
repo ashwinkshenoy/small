@@ -46,6 +46,10 @@ body {
   clear: both;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .text-right {
   text-align: right;
 }
@@ -385,3 +389,44 @@ body {
 }
 /* Stock Overview end */
 /* Portfolio end */
+
+@media screen and (max-width: 992px) {
+  .box-desc {
+    float: none;
+  }
+  .filter-btn {
+    float: none;
+    top: 0;
+    margin: 10px 0 20px 0;
+  }
+  .product-outer {
+    grid-template-columns: auto;
+  }
+  .portfolio {
+    display: block;
+    .stock-table,
+    .stock-chart,
+    .stock-overview {
+       margin: 0 0 35px;
+    }
+    .stock-table {
+      thead th,
+      td {
+        font-size: 12px;
+      }
+      .input-count {
+        align-items: center;
+        justify-content: center;
+      }
+      .remove-img {
+        width: 15px;
+      }
+    }
+    .amchart a {
+      display: none !important;
+    }
+    .white-box {
+      padding: 55px 15px 15px;
+    }
+  }
+}

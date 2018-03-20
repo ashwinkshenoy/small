@@ -132,6 +132,13 @@
                   <img src="images/remove.svg" alt="remove" class="remove-img">
                 </td>
               </tr>
+              <tr ng-if="portfolio.length <= 0">
+                <td colspan="5">
+                  <div class="text-center">
+                    Nothing Here. Try Adding any Stocks!
+                  </div>
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -155,7 +162,7 @@
             </div>
             <div class="col col-width--50 col--mgbtm">
               <div class="stock-overview-title">P/B Ratio</div>
-              <div class="stock-overview-value">12.4</div>
+              <div class="stock-overview-value">0</div>
             </div>
           </div>
           <!--row end-->
